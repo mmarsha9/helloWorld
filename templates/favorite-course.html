@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Test</title>
+</head>
+<body>
+   <h1>Welcome</h1>
+   <!-- two query parameters of your favorite course, passed via URL -->
+   <p>You entered your favorite course as: {{ request.args.get('subject') }} {{ request.args.get('course_number') }}</p>
+</body>
+</html>
+
