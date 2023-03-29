@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <title>Contact</title>
-</head>
-   <h1>Contact</h1>
-<body>
+{% extends "base.html" %}
+
+
+{% block page_header %}Contact Us{% endblock %}
+
+
+{% block page_content %}
 
 <!--Thank you message-->
 {% if form_submitted %}
@@ -44,14 +43,14 @@
 <p><a href="{{ url_for('contact') }}">Complete form again</a></p>
 {% else %}
 
-<form class="mb-3" action="{{ url_for('contact') }}" method="post">
+<form class="row g-3" action="{{ url_for('contact') }}" method="post">
  <div class="col-md-6">
      <label for="first_name" class="form-label">First Name</label>
-     <input type="text" class="form-control-lg" id="first_name" name="first_name">
+     <input type="text" class="form-control-sm" id="first_name" name="first_name" placeholder="First Name" aria-label="First Name">
  </div>
    <div class="col-md-6">
      <label for="last_name" class="form-label">Last Name</label>
-     <input type="text" class="form-control-lg" id="last_name" name="last_name">
+     <input type="text" class="form-control-sm" id="last_name" name="last_name" placeholder="Last Name" aria-label="Last Name">
  </div>
    <div class="input-group col-md-6">
      <label for="email" class="form-label">Email Address</label>
@@ -61,22 +60,20 @@
 
  <div class="col-md-6">
      <label for="phone_Number" class="form-label">Phone Number</label>
-     <input type="tel" class="form-control-lg" placeholder="123-456-7890" name="phone_Number">
+     <input type="tel" class="form-control-sm" placeholder="123-456-7890" name="phone_Number">
  </div>
 
 
- <div class="col-md-6 form-check">
-     <input class="form-check-input-sm" type="checkbox" id="contact_consent" name="contact_consent">
+ <div class="col-md-12 form-check">
+     <input class="form-check-input-sm" type="checkbox" id="agree_check" name="contact_consent">
      <label for="contact_consent" class="form-label">I agree to be contacted.</label>
  </div>
 
 
- <div class="col-12">
+ <div class="col-md-6">
      <button type="submit" class="btn btn-primary">Submit</button>
  </div>
 </form>
 {% endif %}
 
-
-</body>
-</html>
+{% endblock %}
