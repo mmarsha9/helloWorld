@@ -1,40 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact</title>
+   <meta charset="UTF-8">
+   <title>Contact</title>
 </head>
-    <h1>Contact</h1>
+   <h1>Contact</h1>
 <body>
-<!--Created form code for user input contact me form-->
+
+<!--Thank you message-->
+{% if form_submitted %}
+   <div class col-md-6>
+       <h3>You have successfully completed the form! Thank You!</h3>
+   </div>
+
+   <div class="col-md-6">
+       <p>First Name:</p>
+   </div>
+   <div class="col-md-6">
+       <p>{{ request.form.get('first_name') }}</p>
+   </div>
+
+   <div class="col-md-6">
+       <p>Last Name:</p>
+   </div>
+   <div class="col-md-6">
+       <p>{{ request.form.get('last_name') }}</p>
+   </div>
+
+   <div class="col-md-6">
+       <p>Email:</p>
+   </div>
+   <div class="col-md-6">
+       <p>{{ request.form.get('email') }}</p>
+   </div>
+
+   <div class="col-md-6">
+       <p>Agree to be Contacted:</p>
+   </div>
+   <div class="col-md-6">
+       <p>{{ 'Yes' if request.form.get('contact_consent') else 'No' }}</p>
+   </div>
+
+<p><a href="{{ url_for('contact') }}">Complete form again</a></p>
+{% else %}
+
 <form class="mb-3" action="{{ url_for('contact') }}" method="post">
-  <div class="col-md-6">
-      <label for="first_name" class="form-label">First Name</label>
-      <input type="text" class="form-control-lg" id="first_name" name="first_name">
-  </div>
-    <div class="col-md-6">
-      <label for="last_name" class="form-label">Last Name</label>
-      <input type="text" class="form-control-lg" id="last_name" name="last_name">
-  </div>
-    <div class="input-group col-md-6">
-      <label for="email" class="form-label">Email Address</label>
-      <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" aria-label="Email">
-    </div>
+ <div class="col-md-6">
+     <label for="first_name" class="form-label">First Name</label>
+     <input type="text" class="form-control-lg" id="first_name" name="first_name">
+ </div>
+   <div class="col-md-6">
+     <label for="last_name" class="form-label">Last Name</label>
+     <input type="text" class="form-control-lg" id="last_name" name="last_name">
+ </div>
+   <div class="input-group col-md-6">
+     <label for="email" class="form-label">Email Address</label>
+     <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" aria-label="Email">
+   </div>
 
-  <div class="col-md-6">
-      <label for="phone_Number" class="form-label">Phone Number</label>
-      <input type="tel" class="form-control-lg" placeholder="123-456-7890" name="phone_Number">
-  </div>
 
-  <div class="col-md-6 form-check">
-      <input class="form-check-input-sm" type="checkbox" id="contact_consent" name="contact_consent">
-      <label for="contact_consent" class="form-label">I agree to be contacted.</label>
-  </div>
+ <div class="col-md-6">
+     <label for="phone_Number" class="form-label">Phone Number</label>
+     <input type="tel" class="form-control-lg" placeholder="123-456-7890" name="phone_Number">
+ </div>
 
-  <div class="col-12">
-      <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
+
+ <div class="col-md-6 form-check">
+     <input class="form-check-input-sm" type="checkbox" id="contact_consent" name="contact_consent">
+     <label for="contact_consent" class="form-label">I agree to be contacted.</label>
+ </div>
+
+
+ <div class="col-12">
+     <button type="submit" class="btn btn-primary">Submit</button>
+ </div>
 </form>
+{% endif %}
+
 
 </body>
 </html>
