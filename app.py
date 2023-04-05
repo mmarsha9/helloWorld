@@ -130,4 +130,4 @@ if __name__ == '__main__':
             db.session.add(amajor)
             db.session.commit()
         """
-app.run()
+        app.run()
