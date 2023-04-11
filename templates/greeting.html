@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Greeting</title>
+</head>
+<body>
+    <h1>Greeting</h1>
+
+<p>Hello, {{ request.args.get('first_name') }} {{ request.args.get('last_name') }}</p>
+
+<p>Have you enjoyed any of these fun courses?</p>
+
+<ul>
+    {% for each_course in courses %}
+    <li>{{ each_course }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
